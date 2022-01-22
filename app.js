@@ -120,12 +120,7 @@ app.post("/delete", (req, res) => {
     const listName = req.body.listName;
 
     if (listName === "Welcome") {
-        Item.findByIdAndRemove(checkedItemId)
-            .then(() => {
-                console.log("Successfully deleted checked item.");
-                res.redirect("/");
-            })
-            .catch((e) => console.log(e));
+        console.log("Hello");
     } else {
         List.findOneAndUpdate(
             { name: listName },
