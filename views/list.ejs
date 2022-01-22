@@ -1,0 +1,40 @@
+<%- include("header") -%>
+
+    <div class="topnav">
+        <a class='active' href="/"> ← Welcome Page</a>
+        <a>Tip : On the Welcome page, type your name to create your specific ToDo List. Incase of collision, kindly try another name. </a>
+    </div>
+
+    <div class="box" id="heading">
+        <h1>
+            <%= listTitle %>
+        </h1>
+    </div>
+
+    <div class="box">
+
+
+        <%  newListItems.forEach((item) => { %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+                    <p>
+                        <%=item.name%>
+                    </p>
+                </div>
+                <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+            </form>
+            <%  }) %>
+
+
+                <form class="item" action="/" method="post">
+                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                    <% if (listTitle === "Welcome") { %>
+                        <button type="submit" name="list" value="<%= listTitle %>">Go</button>
+                        <% } else { %>
+                            <button type="submit" name="list" value="<%= listTitle %>"><a>+</a></button>
+                            <% } %>
+                </form>
+    </div>
+
+    <%- include("footer") -%>
