@@ -121,6 +121,7 @@ app.post("/delete", (req, res) => {
 
     if (listName === "Welcome") {
         console.log("Hello");
+        res.redirect(`/`);
     } else {
         List.findOneAndUpdate(
             { name: listName },
